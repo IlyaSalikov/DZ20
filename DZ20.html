@@ -10,7 +10,7 @@
     // 1 – если первое больше, чем второе; и 0 – если числа равны.
     /*let a = +prompt('Введите первое число');
     let b = +prompt('Введите второе число');
-    function f() {
+    function f(a, b) {
         if (a === b) {
             return 0;
         } else if (a<b) {
@@ -24,14 +24,10 @@
     alert(f(a, b));*/
 
     //2. Написать функцию, которая вычисляет факториал переданного ей числа.
-    /*function f(x) {
-        if (x === 1) {
-            return 1;
-        } else {
-            return x * f(x - 1);
-        }
+    /*let x = +prompt('Введите число');
+    function f(x) {
+        return x=== 1 ? 1: x * f(--x);
     }
-    let x = +prompt('Введите число');
     alert(f(x));*/
 
     //3. Написать функцию, которая принимает три отдельные цифры и превращает их в одно число.
@@ -40,31 +36,27 @@
     let y = +prompt('Введите вторую цифру');
     let z = +prompt('Введите третью цифру');
     const arr = [x, y, z];
-    function transform() {
-        if (x > 9 || x === 0) {
-            return "Ошибка";
-        } else if (y > 9 || y < 0) {
-            return "Ошибка";
-        } else if (z > 9 || z < 0) {
+    function transform(x, y, z) {
+        if (x && y && z > 9 || x === 0) {
             return "Ошибка";
         } else {
             return arr.join('');
         }
     }
-    alert(transform());*/
+    alert(transform(x, y, z));*/
 
     //4. Написать функцию, которая принимает длину и ширину прямоугольника и вычисляет его площадь.
     // Если в функцию передали 1 параметр, то она вычисляет площадь квадрата.
     /*let x = +prompt('Введите длину прямоугольника');
     let y = +prompt('Введите ширину прямоугольника');
-    function countSquare() {
+    function countSquare(x,y) {
         if (y === 0) {
             return x*x;
         } else {
             return x*y;
         }
     }
-    alert(countSquare());*/
+    alert(countSquare(x,y));*/
 
     //5. Написать функцию, которая проверяет, является ли переданное ей число совершенным.
     // Совершенное число – это число, равное сумме всех своих собственных делителей.
@@ -127,23 +119,48 @@
     alert(showTime(h,m,s));*/
 
     //8. Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
-    /*let h = +prompt('Часы');
-    let m = +prompt('Минуты');
-    let s = +prompt('Секунды');
+    //let h = +prompt('Часы');
+    //let m = +prompt('Минуты');
+    //let s = +prompt('Секунды');
     function seconds(h, m, s) {
         return (h * 3600) + (m * 60) + s
     }
-    alert(seconds(h,m,s));*/
+    //alert(seconds(h,m,s));
 
     //9. Написать функцию, которая принимает количество секунд,
     // переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».
-    /*нет ответа*/
+    // let x = +prompt("Введите количество секунд:");
+    function toStringSeconds(x) {
+        let h = Math.trunc(x / 3600);
+        let m = Math.trunc((x % 3600) / 60);
+        let s = Math.trunc((x % 3600) % 60);
+        if (h < 10) h = (`0${h}`);
+        if (m < 10) m = (`0${m}`);
+        if (s < 10) s = (`0${s}`); {
+
+            return (`${h}:${m}:${s}`);
+        }
+    }
+    // alert(toStringSeconds(x));
 
     //10. Написать функцию, которая считает разницу между датами.
     // Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс».
     // При выполнении задания используйте функции из предыдущих 2-х заданий:
     // сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс».
     /*нет ответа*/
+    let h1 = +prompt('Часы первой даты');
+    let m1 = +prompt('Минуты первой даты');
+    let s1 = +prompt('Секунды первой даты');
+    let h2 = +prompt('Часы второй даты');
+    let m2 = +prompt('Минуты второй даты');
+    let s2 = +prompt('Секунды второй даты');
+    function getTimeDifference(h1, m1, s1, h2, m2, s2) {
+        let a = seconds(h1, m1, s1);
+        let b = seconds(h2, m2, s2);
+        if (a > b) return toStringSeconds(a - b);
+        else return toStringSeconds(b - a);
+    }
+    alert(getTimeDifference(h1, m1, s1, h2, m2, s2));
 </script>
 </body>
 </html>
